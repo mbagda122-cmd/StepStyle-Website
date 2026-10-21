@@ -19,46 +19,126 @@
             <a href="#shoes">Shoes</a>
             <a href="#sandals">Sandals</a>
         </nav>
+        
+<div class="cart-badge">
+    🛒 Cart: <span id="header-cart-count">0</span>
+</div>
+
     </header>
 
     <main>
         <h2>Welcome to StepStyle!</h2>
         <p>Find your perfect shoes and sandals.</p>
+        
+<div class="search-container">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search shoes or sandals..."
+        oninput="searchProducts()"
+    >
+</div>
 
-        <section id="shoes">
-            <h2>Our Shoes 👟</h2>
-            <p>Explore stylish shoes for every day.</p>
-        </section>
+<div class="category-filter">
+    <button class="category-btn active" onclick="filterCategory('all', this)">
+        All Products
+    </button>
 
-<section id="sandals">
-    <h2>Our Sandals 🩴</h2>
-    <p>Discover comfortable and trendy sandals.</p>
+    <button class="category-btn" onclick="filterCategory('shoes', this)">
+        👟 Shoes
+    </button>
 
-<main>
-    <h2>Welcome to StepStyle!</h2>
-    <p>Find your perfect shoes and sandals.</p>
+    <button class="category-btn" onclick="filterCategory('sandals', this)">
+        🩴 Sandals
+    </button>
+</div>
 
-    <div class="product-container">
+        
+<div class="product-container">
 
-        <div class="product-card" id="shoes">
-            <img src="https://placehold.co/250x180?text=Running+Shoes"
-                 alt="Running Shoes">
-            <h3>Running Shoes 👟</h3>
-            <p>Price: ₹1,499</p>
-            <button>Buy Now</button>
-        </div>
+    <div class="product-card" id="shoes">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+             alt="Red Running Shoes">
 
-        <div class="product-card" id="sandals">
-            <img src="https://placehold.co/250x180?text=Stylish+Sandals"
-                 alt="Stylish Sandals">
-            <h3>Stylish Sandals 🩴</h3>
-            <p>Price: ₹799</p>
-            <button>Buy Now</button>
-        </div>
+        <h3>Running Shoes 👟</h3>
+        <p>Price: ₹1,499</p>
 
+        <button onclick="addToCart('Running Shoes', 1499)">
+            Add to Cart 🛒
+        </button>
     </div>
-</main>
 
+    <div class="product-card" id="sandals">
+        <img src="images/sandals.jpg" alt="Stylish Sandals">
+
+        <h3>Stylish Sandals 🩴</h3>
+        <p>Price: ₹799</p>
+
+        <button onclick="addToCart('Stylish Sandals', 799)">
+            Add to Cart 🛒
+        </button>
+    </div>
+    
+<div class="product-card" id="sneakers">
+    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
+         alt="White Sneakers">
+    <h3>White Sneakers 👟</h3>
+    <p>Price: ₹1,899</p>
+    <button onclick="addToCart('White Sneakers', 1899)">
+        Add to Cart 🛒
+    </button>
+</div>
+
+<div class="product-card" id="heels">
+    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500"
+         alt="Stylish Heels">
+    <h3>Stylish Heels 👠</h3>
+    <p>Price: ₹1,299</p>
+    <button onclick="addToCart('Stylish Heels', 1299)">
+        Add to Cart 🛒
+    </button>
+</div>
+
+<section id="reviews">
+    <h2>⭐ Customer Reviews</h2>
+
+    <form id="review-form">
+        <label for="review-name">Your Name:</label>
+        <input type="text" id="review-name"
+               placeholder="Enter your name" required>
+
+        <label for="review-rating">Rating:</label>
+        <select id="review-rating" required>
+            <option value="">Select rating</option>
+            <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+            <option value="4">⭐⭐⭐⭐ - Very Good</option>
+            <option value="3">⭐⭐⭐ - Good</option>
+            <option value="2">⭐⭐ - Average</option>
+            <option value="1">⭐ - Poor</option>
+        </select>
+
+        <label for="review-message">Your Review:</label>
+        <textarea id="review-message"
+                  placeholder="Write your experience..."
+                  required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <div id="review-list"></div>
+</section>
+
+</div>
+
+
+<section id="cart">
+    <h2>🛒 My Cart</h2>
+    <p>Items in Cart: <span id="cart-count">0</span></p>
+    <ul id="cart-items"></ul>   
+<button onclick="clearCart()">Clear Cart 🗑️</button>
+
+    <h3>Total: ₹<span id="cart-total">0</span></h3>
+</section>
 
 </main>
 
@@ -66,6 +146,7 @@
     <p>© 2026 StepStyle</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
 
