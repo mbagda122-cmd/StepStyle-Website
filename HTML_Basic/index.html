@@ -1,6 +1,7 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,134 +20,172 @@
             <a href="#shoes">Shoes</a>
             <a href="#sandals">Sandals</a>
         </nav>
-        
-<div class="cart-badge">
-    🛒 Cart: <span id="header-cart-count">0</span>
-</div>
 
+        <div class="cart-badge">
+            🛒 Cart: <span id="header-cart-count">0</span>
+        </div>
     </header>
 
     <main>
+
         <h2>Welcome to StepStyle!</h2>
         <p>Find your perfect shoes and sandals.</p>
-        
-<div class="search-container">
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Search shoes or sandals..."
-        oninput="searchProducts()"
-    >
-</div>
 
-<div class="category-filter">
-    <button class="category-btn active" onclick="filterCategory('all', this)">
-        All Products
-    </button>
+        <!-- Search Products -->
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search shoes or sandals..."
+                oninput="searchProducts()"
+            >
+        </div>
 
-    <button class="category-btn" onclick="filterCategory('shoes', this)">
-        👟 Shoes
-    </button>
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button
+                class="category-btn active"
+                onclick="filterCategory('all', this)">
+                All Products
+            </button>
 
-    <button class="category-btn" onclick="filterCategory('sandals', this)">
-        🩴 Sandals
-    </button>
-</div>
+            <button
+                class="category-btn"
+                onclick="filterCategory('shoes', this)">
+                👟 Shoes
+            </button>
 
-        
-<div class="product-container">
+            <button
+                class="category-btn"
+                onclick="filterCategory('sandals', this)">
+                🩴 Sandals
+            </button>
+        </div>
 
-    <div class="product-card" id="shoes">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
-             alt="Red Running Shoes">
+        <!-- Product Cards -->
+        <div class="product-container">
 
-        <h3>Running Shoes 👟</h3>
-        <p>Price: ₹1,499</p>
+            <div class="product-card" id="shoes">
+                <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+                    alt="Red Running Shoes"
+                >
 
-        <button onclick="addToCart('Running Shoes', 1499)">
-            Add to Cart 🛒
-        </button>
-    </div>
+                <h3>Running Shoes 👟</h3>
+                <p>Price: ₹1,499</p>
 
-    <div class="product-card" id="sandals">
-        <img src="images/sandals.jpg" alt="Stylish Sandals">
+                <button onclick="addToCart('Running Shoes', 1499)">
+                    Add to Cart 🛒
+                </button>
+            </div>
 
-        <h3>Stylish Sandals 🩴</h3>
-        <p>Price: ₹799</p>
+            <div class="product-card" id="sandals">
+                <img src="images/sandals.jpg" alt="Stylish Sandals">
 
-        <button onclick="addToCart('Stylish Sandals', 799)">
-            Add to Cart 🛒
-        </button>
-    </div>
-    
-<div class="product-card" id="sneakers">
-    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
-         alt="White Sneakers">
-    <h3>White Sneakers 👟</h3>
-    <p>Price: ₹1,899</p>
-    <button onclick="addToCart('White Sneakers', 1899)">
-        Add to Cart 🛒
-    </button>
-</div>
+                <h3>Stylish Sandals 🩴</h3>
+                <p>Price: ₹799</p>
 
-<div class="product-card" id="heels">
-    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500"
-         alt="Stylish Heels">
-    <h3>Stylish Heels 👠</h3>
-    <p>Price: ₹1,299</p>
-    <button onclick="addToCart('Stylish Heels', 1299)">
-        Add to Cart 🛒
-    </button>
-</div>
+                <button onclick="addToCart('Stylish Sandals', 799)">
+                    Add to Cart 🛒
+                </button>
+            </div>
 
-<section id="reviews">
-    <h2>⭐ Customer Reviews</h2>
+            <div class="product-card" id="sneakers">
+                <img
+                    src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
+                    alt="White Sneakers"
+                >
 
-    <form id="review-form">
-        <label for="review-name">Your Name:</label>
-        <input type="text" id="review-name"
-               placeholder="Enter your name" required>
+                <h3>White Sneakers 👟</h3>
+                <p>Price: ₹1,899</p>
 
-        <label for="review-rating">Rating:</label>
-        <select id="review-rating" required>
-            <option value="">Select rating</option>
-            <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
-            <option value="4">⭐⭐⭐⭐ - Very Good</option>
-            <option value="3">⭐⭐⭐ - Good</option>
-            <option value="2">⭐⭐ - Average</option>
-            <option value="1">⭐ - Poor</option>
-        </select>
+                <button onclick="addToCart('White Sneakers', 1899)">
+                    Add to Cart 🛒
+                </button>
+            </div>
 
-        <label for="review-message">Your Review:</label>
-        <textarea id="review-message"
-                  placeholder="Write your experience..."
-                  required></textarea>
+            <div class="product-card" id="heels">
+                <img
+                    src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500"
+                    alt="Stylish Heels"
+                >
 
-        <button type="submit">Submit Review</button>
-    </form>
+                <h3>Stylish Heels 👠</h3>
+                <p>Price: ₹1,299</p>
 
-    <div id="review-list"></div>
-</section>
+                <button onclick="addToCart('Stylish Heels', 1299)">
+                    Add to Cart 🛒
+                </button>
+            </div>
 
-</div>
+        </div>
+        <!-- Product Container Ends Here -->
 
+        <!-- Customer Reviews -->
+        <section id="reviews">
+            <h2>⭐ Customer Reviews</h2>
 
-<section id="cart">
-    <h2>🛒 My Cart</h2>
-    <p>Items in Cart: <span id="cart-count">0</span></p>
-    <ul id="cart-items"></ul>   
-<button onclick="clearCart()">Clear Cart 🗑️</button>
+            <form id="review-form">
 
-    <h3>Total: ₹<span id="cart-total">0</span></h3>
-</section>
+                <label for="review-name">Your Name:</label>
+                <input
+                    type="text"
+                    id="review-name"
+                    placeholder="Enter your name"
+                    required
+                >
 
-</main>
+                <label for="review-rating">Rating:</label>
+                <select id="review-rating" required>
+                    <option value="">Select rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ - Very Good</option>
+                    <option value="3">⭐⭐⭐ - Good</option>
+                    <option value="2">⭐⭐ - Average</option>
+                    <option value="1">⭐ - Poor</option>
+                </select>
 
-<footer>
-    <p>© 2026 StepStyle</p>
-</footer>
+                <label for="review-message">Your Review:</label>
+                <textarea
+                    id="review-message"
+                    placeholder="Write your experience..."
+                    required
+                ></textarea>
 
-<script src="script.js"></script>
+                <button type="submit">Submit Review</button>
+
+            </form>
+
+            <div id="review-list"></div>
+        </section>
+
+        <!-- Shopping Cart -->
+        <section id="cart">
+            <h2>🛒 My Cart</h2>
+
+            <p>
+                Items in Cart:
+                <span id="cart-count">0</span>
+            </p>
+
+            <ul id="cart-items"></ul>
+
+            <button onclick="clearCart()">
+                Clear Cart 🗑️
+            </button>
+
+            <h3>
+                Total: ₹<span id="cart-total">0</span>
+            </h3>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 StepStyle</p>
+    </footer>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
-

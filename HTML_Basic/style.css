@@ -354,3 +354,65 @@ footer {
     border-radius: 12px;
 }
 
+/* Extra mobile improvements */
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+button,
+.category-btn {
+    min-height: 44px;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 22px 12px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav {
+        gap: 15px;
+        padding: 0 8px;
+    }
+
+    nav a {
+        padding: 8px 4px;
+    }
+
+    .product-card {
+        padding: 16px;
+    }
+
+    .product-card img {
+        height: 190px;
+    }
+
+    #cart,
+    #reviews {
+        width: auto;
+        margin: 18px 8px;
+        padding: 16px;
+    }
+
+    #cart li {
+        overflow-wrap: anywhere;
+    }
+
+    #cart li button {
+        margin-top: 6px;
+    }
+
+    #review-form button {
+        width: 100%;
+        min-height: 44px;
+    }
+}
+
