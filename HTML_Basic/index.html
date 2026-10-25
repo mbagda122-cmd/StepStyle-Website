@@ -1,19 +1,19 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StepStyle - Shoes & Sandals</title>
+    <title>MeetStyle - Shoes & Sandals</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header>
-        <h1>StepStyle 👟</h1>
-        <p>Your Style, Your Steps!</p>
+        <h1>MeetStyle 👟</h1>
+        <p>Every Step, Your Style.</p>
 
         <nav>
             <a href="#">Home</a>
@@ -28,8 +28,32 @@
 
     <main>
 
-        <h2>Welcome to StepStyle!</h2>
-        <p>Find your perfect shoes and sandals.</p>
+        <h2>Welcome to MeetStyle!</h2>
+<p>Discover your perfect style, one step at a time.</p>
+
+
+<!-- MeetStyle Hero Banner -->
+<section class="hero-banner">
+    <div class="hero-content">
+        <p class="hero-label">MEETSTYLE COLLECTION</p>
+
+        <h2>Step Into Your Style.</h2>
+
+        <p>
+            Discover stylish shoes and sandals
+            made for every step of your journey.
+        </p>
+
+        <a href="#shoes" class="hero-btn">
+            Explore Collection →
+        </a>
+    </div>
+
+    <div class="hero-icon" aria-hidden="true">
+        👟
+    </div>
+</section>
+
 
         <!-- Search Products -->
         <div class="search-container">
@@ -41,26 +65,38 @@
             >
         </div>
 
-        <!-- Category Filter -->
-        <div class="category-filter">
-            <button
-                class="category-btn active"
-                onclick="filterCategory('all', this)">
-                All Products
-            </button>
+        
+<div class="category-filter">
 
-            <button
-                class="category-btn"
-                onclick="filterCategory('shoes', this)">
-                👟 Shoes
-            </button>
+    <button
+        class="category-btn active"
+        onclick="window.location.href='index.html'">
+        All Products
+    </button>
 
-            <button
-                class="category-btn"
-                onclick="filterCategory('sandals', this)">
-                🩴 Sandals
-            </button>
-        </div>
+    <button
+        class="category-btn"
+        onclick="window.location.href='shoes.html'">
+        👟 Shoes
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="window.location.href='sandals.html'">
+        🩴 Sandals
+    </button>
+
+</div>
+
+
+        
+<!-- Featured Products Heading -->
+<section class="featured-heading">
+    <p class="featured-label">OUR COLLECTION</p>
+    <h2>Featured Products</h2>
+    <p>Find your next favourite pair at MeetStyle.</p>
+</section>
+
 
         <!-- Product Cards -->
         <div class="product-container">
@@ -77,6 +113,13 @@
                 <button onclick="addToCart('Running Shoes', 1499)">
                     Add to Cart 🛒
                 </button>
+                
+<button
+    class="details-btn"
+    onclick="openProductDetails(this)">
+    View Details
+</button>
+
             </div>
 
             <div class="product-card" id="sandals">
@@ -87,6 +130,13 @@
 
                 <button onclick="addToCart('Stylish Sandals', 799)">
                     Add to Cart 🛒
+                    
+<button
+    class="details-btn"
+    onclick="openProductDetails(this)">
+    View Details
+</button>
+
                 </button>
             </div>
 
@@ -101,6 +151,13 @@
 
                 <button onclick="addToCart('White Sneakers', 1899)">
                     Add to Cart 🛒
+                    
+<button
+    class="details-btn"
+    onclick="openProductDetails(this)">
+    View Details
+</button>
+
                 </button>
             </div>
 
@@ -116,6 +173,13 @@
                 <button onclick="addToCart('Stylish Heels', 1299)">
                     Add to Cart 🛒
                 </button>
+                
+<button
+    class="details-btn"
+    onclick="openProductDetails(this)">
+    View Details
+</button>
+
             </div>
 
         </div>
@@ -182,7 +246,7 @@
     </main>
 
     <footer>
-        <p>© 2026 StepStyle</p>
+        <p>© 2026 MeetStyle. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

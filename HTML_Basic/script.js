@@ -1,3 +1,4 @@
+
 let cart = JSON.parse(localStorage.getItem("stepStyleCart")) || [];
 let total = 0;
 let selectedCategory = "all";
@@ -18,7 +19,7 @@ function removeFromCart(index) {
     updateCart();
 }
 
-// Update cart items and total
+// Update cart safely on every page
 function updateCart() {
     const cartCount = document.getElementById("cart-count");
     const cartItems = document.getElementById("cart-items");
@@ -26,44 +27,67 @@ function updateCart() {
     const headerCartCount = document.getElementById("header-cart-count");
 
     total = 0;
-    cartItems.innerHTML = "";
+
+    if (cartItems) {
+        cartItems.innerHTML = "";
+    }
 
     cart.forEach(function(product, index) {
-        total += product.price;
+        total += Number(product.price) || 0;
 
-        const item = document.createElement("li");
-        item.textContent =
-            product.name + " - ₹" + product.price + " ";
+        // Create cart item only if the cart section exists
+        if (cartItems) {
+            const item = document.createElement("li");
 
-        const removeButton = document.createElement("button");
-        removeButton.textContent = "Remove ❌";
+            item.textContent =
+                product.name + " - ₹" + product.price + " ";
 
-        removeButton.onclick = function() {
-            removeFromCart(index);
-        };
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove ❌";
 
-        item.appendChild(removeButton);
-        cartItems.appendChild(item);
+            removeButton.onclick = function() {
+                removeFromCart(index);
+            };
+
+            item.appendChild(removeButton);
+            cartItems.appendChild(item);
+        }
     });
-cartCount.textContent = cart.length;
-headerCartCount.textContent = cart.length;
-cartTotal.textContent = total;
-localStorage.setItem("stepStyleCart", JSON.stringify(cart));
 
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
+
+    if (headerCartCount) {
+        headerCartCount.textContent = cart.length;
+    }
+
+    if (cartTotal) {
+        cartTotal.textContent = total;
+    }
+
+    localStorage.setItem("stepStyleCart", JSON.stringify(cart));
 }
 
 // Search products and apply category filter
 function searchProducts() {
-    const searchText = document
-        .getElementById("searchInput")
-        .value.toLowerCase().trim();
+    const searchInput = document.getElementById("searchInput");
 
+    if (!searchInput) {
+        return;
+    }
+
+    const searchText = searchInput.value.toLowerCase().trim();
     const products = document.querySelectorAll(".product-card");
 
     products.forEach(function(product) {
-        const productName = product.querySelector("h3")
-            .textContent.toLowerCase();
+        const nameElement = product.querySelector("h3");
 
+        if (!nameElement) {
+            return;
+        }
+
+        const productName = nameElement.textContent.toLowerCase();
         const matchesSearch = productName.includes(searchText);
 
         const matchesCategory =
@@ -86,7 +110,9 @@ function filterCategory(category, button) {
         btn.classList.remove("active");
     });
 
-    button.classList.add("active");
+    if (button) {
+        button.classList.add("active");
+    }
 
     searchProducts();
 }
@@ -97,16 +123,19 @@ function clearCart() {
     updateCart();
 }
 
- // Load saved customer reviews
-let savedReviews = JSON.parse(
-    localStorage.getItem("stepStyleReviews")
-) || [];
+// Load saved customer reviews
+let savedReviews =
+    JSON.parse(localStorage.getItem("stepStyleReviews")) || [];
 
 const reviewForm = document.getElementById("review-form");
 const reviewList = document.getElementById("review-list");
 
-// Function to display one review
+// Display one review, if this page has a reviews section
 function displayReview(review) {
+    if (!reviewList) {
+        return;
+    }
+
     const reviewItem = document.createElement("div");
     reviewItem.className = "review-item";
 
@@ -145,35 +174,127 @@ function displayReview(review) {
     reviewList.appendChild(reviewItem);
 }
 
-// Display saved reviews when the page opens
-savedReviews.forEach(function(review) {
-    displayReview(review);
-});
+// Display saved reviews only when the reviews section exists
+if (reviewList) {
+    savedReviews.forEach(function(review) {
+        displayReview(review);
+    });
+}
 
-// Submit a new customer review
-reviewForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+// Submit customer reviews only when the form exists
+if (reviewForm) {
+    reviewForm.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-    const name = document.getElementById("review-name").value.trim();
-    const rating = document.getElementById("review-rating").value;
-    const message = document.getElementById("review-message").value.trim();
+        const name = document.getElementById("review-name").value.trim();
+        const rating = document.getElementById("review-rating").value;
+        const message =
+            document.getElementById("review-message").value.trim();
 
-    const review = {
-        name: name,
-        rating: rating,
-        message: message
-    };
+        const review = {
+            name: name,
+            rating: rating,
+            message: message
+        };
 
-    savedReviews.push(review);
+        savedReviews.push(review);
 
-    localStorage.setItem(
-        "stepStyleReviews",
-        JSON.stringify(savedReviews)
-    );
+        localStorage.setItem(
+            "stepStyleReviews",
+            JSON.stringify(savedReviews)
+        );
 
-    displayReview(review);
-    reviewForm.reset();
-});
+        displayReview(review);
+        reviewForm.reset();
+    });
+}
 
-// Display cart when the page opens
+// Load the cart when the page opens
 updateCart();
+
+/* Open the selected product's details page */
+function openProductDetails(button) {
+    const card = button.closest(".product-card");
+
+    if (!card) {
+        return;
+    }
+
+    const image = card.querySelector("img");
+    const name = card.querySelector("h3");
+    const priceText = card.querySelector("p");
+
+    if (!image || !name || !priceText) {
+        return;
+    }
+
+    const productName = name.textContent.trim();
+    const productPrice = priceText.textContent.replace(/[^\d]/g, "");
+
+    let description =
+        "Discover stylish and comfortable footwear for every step.";
+
+    if (productName.toLowerCase().includes("running")) {
+        description =
+            "Comfortable running shoes for your everyday activities.";
+    } else if (productName.toLowerCase().includes("sandal")) {
+        description =
+            "Stylish sandals designed for comfort and everyday wear.";
+    } else if (productName.toLowerCase().includes("sneaker")) {
+        description =
+            "Classic sneakers to complete your everyday style.";
+    } else if (productName.toLowerCase().includes("heel")) {
+        description =
+            "Elegant heels to add a stylish touch to your look.";
+    }
+
+    const params = new URLSearchParams({
+        name: productName,
+        price: productPrice,
+        image: image.src,
+        description: description
+    });
+
+    window.location.href =
+        "product-details.html?" + params.toString();
+}
+
+
+/* Load the selected product on the details page */
+const detailsButton =
+    document.getElementById("details-add-to-cart");
+
+if (detailsButton) {
+    const params = new URLSearchParams(window.location.search);
+
+    const productName =
+        params.get("name") || "Running Shoes 👟";
+
+    const productPrice =
+        Number(params.get("price")) || 1499;
+
+    const productImage = params.get("image");
+    const productDescription = params.get("description");
+
+    document.getElementById("detail-name").textContent =
+        productName;
+
+    document.getElementById("detail-price").textContent =
+        "₹" + productPrice.toLocaleString("en-IN");
+
+    if (productImage) {
+        document.getElementById("detail-image").src =
+            productImage;
+    }
+
+    if (productDescription) {
+        document.getElementById("detail-description").textContent =
+            productDescription;
+    }
+
+    detailsButton.addEventListener("click", function() {
+        addToCart(productName, productPrice);
+
+        detailsButton.textContent = "Added to Cart ✓";
+    });
+}

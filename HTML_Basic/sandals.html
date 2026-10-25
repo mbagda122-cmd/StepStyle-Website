@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MeetStyle - Sandals Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>MeetStyle 👟</h1>
+        <p>Every Step, Your Style.</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="sandals.html">Sandals</a>
+        </nav>
+
+        <div class="cart-badge">
+            🛒 Cart: <span id="header-cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Sandals Collection Heading -->
+        <section class="featured-heading">
+            <p class="featured-label">MEETSTYLE COLLECTION</p>
+            <h2>Sandals Collection 🩴</h2>
+            <p>Comfort and style in every step.</p>
+        </section>
+
+        <!-- Search Products -->
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search sandals or heels..."
+                oninput="searchProducts()"
+            >
+        </div>
+
+        <!-- Sandals Product Cards -->
+        <div class="product-container">
+
+            <div class="product-card" id="sandals">
+                <img
+                    src="images/sandals.jpg"
+                    alt="Stylish Sandals"
+                >
+
+                <h3>Stylish Sandals 🩴</h3>
+                <p>Price: ₹799</p>
+
+                <button onclick="addToCart('Stylish Sandals', 799)">
+                    Add to Cart 🛒
+                </button>
+                
+<button
+    class="details-btn"
+    onclick="openProductDetails(this)">
+    View Details
+</button>
+
+            </div>
+
+            <div class="product-card" id="heels">
+                <img
+                    src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500"
+                    alt="Stylish Heels"
+                >
+
+                <h3>Stylish Heels 👠</h3>
+                <p>Price: ₹1,299</p>
+
+                <button onclick="addToCart('Stylish Heels', 1299)">
+                    Add to Cart 🛒
+                </button>
+                
+<button
+    class="details-btn"
+    onclick="openProductDetails(this)">
+    View Details
+</button>
+
+            </div>
+
+        </div>
+
+        <p>
+            <a href="index.html">← Back to Home</a>
+        </p>
+
+    </main>
+
+    <footer>
+        <p>© 2026 MeetStyle. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

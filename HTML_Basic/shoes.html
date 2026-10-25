@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MeetStyle - Shoes Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>MeetStyle 👟</h1>
+        <p>Every Step, Your Style.</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="sandals.html">Sandals</a>
+            <a href="cart.html">My Cart 🛒</a>
+        </nav>
+
+        <div class="cart-badge">
+            🛒 Cart: <span id="header-cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Shoes Collection Heading -->
+        <section class="featured-heading">
+            <p class="featured-label">MEETSTYLE COLLECTION</p>
+            <h2>Shoes Collection 👟</h2>
+            <p>Find the perfect pair for every step.</p>
+        </section>
+
+        <!-- Search Shoes -->
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search shoes..."
+                oninput="searchProducts()"
+            >
+        </div>
+
+        <!-- Shoes Products -->
+        <div class="product-container">
+
+            <!-- Running Shoes -->
+            <div class="product-card" id="shoes">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+                    alt="Red Running Shoes"
+                >
+
+                <h3>Running Shoes 👟</h3>
+                <p>Price: ₹1,499</p>
+
+                <button onclick="addToCart('Running Shoes', 1499)">
+                    Add to Cart 🛒
+                </button>
+
+                <button
+                    class="details-btn"
+                    onclick="openProductDetails(this)">
+                    View Details
+                </button>
+
+            </div>
+
+            <!-- White Sneakers -->
+            <div class="product-card" id="sneakers">
+
+                <img
+                    src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
+                    alt="White Sneakers"
+                >
+
+                <h3>White Sneakers 👟</h3>
+                <p>Price: ₹1,899</p>
+
+                <button onclick="addToCart('White Sneakers', 1899)">
+                    Add to Cart 🛒
+                </button>
+
+                <button
+                    class="details-btn"
+                    onclick="openProductDetails(this)">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <p>
+            <a href="index.html">← Back to Home</a>
+        </p>
+
+    </main>
+
+    <footer>
+        <p>© 2026 MeetStyle. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
