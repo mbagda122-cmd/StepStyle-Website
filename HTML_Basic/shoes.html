@@ -5,104 +5,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>MeetStyle - Shoes Collection</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>MeetStyle 👟</h1>
-        <p>Every Step, Your Style.</p>
+   
+<header class="site-header">
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="shoes.html">Shoes</a>
-            <a href="sandals.html">Sandals</a>
-            <a href="cart.html">My Cart 🛒</a>
-        </nav>
+    <div class="header-brand">
+        <img src="images/MeetStyle-logo.png.png"
+             alt="MeetStyle"
+             class="meetstyle-logo-image">
+    </div>
 
-        <div class="cart-badge">
-            🛒 Cart: <span id="header-cart-count">0</span>
-        </div>
-    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="sandals.html">Sandals</a>
+        <a href="cart.html">My Cart 🛒</a>
+    </nav>
 
-    <main>
+    <div class="cart-badge">
+        🛒 Cart: <span id="header-cart-count">0</span>
+    </div>
 
-        <!-- Shoes Collection Heading -->
-        <section class="featured-heading">
+</header>
+
+
+    <main class="collection-page">
+
+        <section class="collection-hero">
             <p class="featured-label">MEETSTYLE COLLECTION</p>
-            <h2>Shoes Collection 👟</h2>
-            <p>Find the perfect pair for every step.</p>
+            <h2>Find Your Perfect Shoes</h2>
+            <p>
+                Walk with confidence. Discover stylish shoes
+                made for your everyday journey.
+            </p>
         </section>
 
-        <!-- Search Shoes -->
-        <div class="search-container">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="🔍 Search shoes..."
-                oninput="searchProducts()"
-            >
-        </div>
+        <section class="collection-products">
 
-        <!-- Shoes Products -->
-        <div class="product-container">
+            <h2>Our Shoes Collection 👟</h2>
+            <p class="collection-subtitle">
+                Comfort, quality and style in every step.
+            </p>
 
-            <!-- Running Shoes -->
-            <div class="product-card" id="shoes">
-
-                <img
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
-                    alt="Red Running Shoes"
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search your favourite shoes..."
+                    oninput="searchProducts()"
                 >
+            </div>
 
-                <h3>Running Shoes 👟</h3>
-                <p>Price: ₹1,499</p>
+            <div class="product-container">
 
-                <button onclick="addToCart('Running Shoes', 1499)">
-                    Add to Cart 🛒
-                </button>
+                <div class="product-card" id="shoes">
 
-                <button
-                    class="details-btn"
-                    onclick="openProductDetails(this)">
-                    View Details
-                </button>
+                    <img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+                        alt="Red Running Shoes"
+                    >
+
+                    <h3>Running Shoes 👟</h3>
+                    <p>Price: ₹1,499</p>
+
+                    <button onclick="addToCart('Running Shoes', 1499)">
+                        Add to Cart 🛒
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="openProductDetails(this)">
+                        View Details
+                    </button>
+
+                </div>
+
+                <div class="product-card" id="sneakers">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
+                        alt="White Sneakers"
+                    >
+
+                    <h3>White Sneakers 👟</h3>
+                    <p>Price: ₹1,899</p>
+
+                    <button onclick="addToCart('White Sneakers', 1899)">
+                        Add to Cart 🛒
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="openProductDetails(this)">
+                        View Details
+                    </button>
+
+                </div>
 
             </div>
 
-            <!-- White Sneakers -->
-            <div class="product-card" id="sneakers">
+            <a href="index.html" class="back-home-btn">
+                ← Back to Home
+            </a>
 
-                <img
-                    src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
-                    alt="White Sneakers"
-                >
-
-                <h3>White Sneakers 👟</h3>
-                <p>Price: ₹1,899</p>
-
-                <button onclick="addToCart('White Sneakers', 1899)">
-                    Add to Cart 🛒
-                </button>
-
-                <button
-                    class="details-btn"
-                    onclick="openProductDetails(this)">
-                    View Details
-                </button>
-
-            </div>
-
-        </div>
-
-        <p>
-            <a href="index.html">← Back to Home</a>
-        </p>
+        </section>
 
     </main>
 
