@@ -11,39 +11,39 @@
 
 <body>
 
-    
-<header class="site-header">
+    <header class="site-header">
+        <div class="header-brand">
+            <img src="images/MeetStyle-logo.png.png"
+                 alt="MeetStyle"
+                 class="meetstyle-logo-image">
+        </div>
 
-    <div class="header-brand">
-        <img src="images/MeetStyle-logo.png.png"
-             alt="MeetStyle"
-             class="meetstyle-logo-image">
-    </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="sandals.html">Sandals</a>
+        </nav>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="shoes.html">Shoes</a>
-        <a href="sandals.html">Sandals</a>
-        <a href="cart.html">My Cart 🛒</a>
-    </nav>
+        <a href="cart.html" class="cart-badge">
+            🛒 My Cart <span id="header-cart-count">0</span>
+        </a>
+    </header>
 
-    <div class="cart-badge">
-        🛒 Cart: <span id="header-cart-count">0</span>
-    </div>
+    <main class="checkout-page">
 
-</header>
-
-
-    <main>
-
-        <h2>Checkout 🛍️</h2>
-        <p>Enter your delivery details below.</p>
+        <section class="checkout-heading">
+            <p class="cart-eyebrow">ALMOST YOURS</p>
+            <h1>Complete Your Order ✨</h1>
+            <p>Just a few details before your favourite picks are yours.</p>
+        </section>
 
         <div class="checkout-layout">
 
-            <!-- Delivery Form -->
             <section class="checkout-form-section">
                 <h2>Delivery Information</h2>
+                <p class="checkout-card-subtitle">
+                    Where should we deliver your order?
+                </p>
 
                 <form id="checkout-form">
 
@@ -98,7 +98,7 @@
                     </select>
 
                     <button type="submit" class="checkout-submit">
-                        Place Demo Order
+                        Place Demo Order →
                     </button>
 
                 </form>
@@ -106,18 +106,27 @@
                 <p id="checkout-message" role="status"></p>
             </section>
 
-            <!-- Order Summary -->
-            <section class="checkout-summary">
+            <aside class="checkout-summary">
+
+                <p class="summary-eyebrow">YOUR ORDER</p>
                 <h2>Order Summary</h2>
 
                 <ul id="checkout-items"></ul>
 
-                <h3>
-                    Total: ₹<span id="checkout-total">0</span>
-                </h3>
+                <div class="summary-total">
+                    <span>Total Amount</span>
+                    <strong>₹<span id="checkout-total">0</span></strong>
+                </div>
 
-                <a href="cart.html">← Back to Cart</a>
-            </section>
+                <a href="cart.html" class="back-to-cart">
+                    ← Back to Cart
+                </a>
+
+                <p class="demo-note">
+                    This is a demo checkout. No real payment will be taken.
+                </p>
+
+            </aside>
 
         </div>
 
@@ -143,6 +152,7 @@
             document.getElementById("checkout-message");
 
         function showOrderSummary() {
+
             checkoutItems.innerHTML = "";
 
             let total = 0;
@@ -154,6 +164,7 @@
             }
 
             checkoutCart.forEach(function(product) {
+
                 const item = document.createElement("li");
 
                 item.textContent =
@@ -183,7 +194,7 @@
                 }
 
                 checkoutMessage.textContent =
-                    "Form test successful! This is a demo only. " +
+                    "Demo order form submitted successfully! " +
                     "No real order was placed and no payment was taken.";
             });
     </script>

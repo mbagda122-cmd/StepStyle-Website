@@ -4,13 +4,41 @@ let total = 0;
 let selectedCategory = "all";
 
 // Add product to cart
-function addToCart(productName, price) {
+function addToCart(productName, price, button) {
+
+    let selectedSize = "";
+
+    if (button && button.closest(".product-card")) {
+        const card = button.closest(".product-card");
+        const sizeSelect = card.querySelector(".product-size");
+
+        if (sizeSelect) {
+            selectedSize = sizeSelect.value;
+
+            if (selectedSize === "") {
+                alert("Please select your size first!");
+                return;
+            }
+        }
+    }
+
     cart.push({
         name: productName,
-        price: price
+        price: Number(price),
+        size: selectedSize
     });
 
     updateCart();
+
+    if (button && button.tagName === "BUTTON") {
+        button.textContent = "Added ✓";
+
+        setTimeout(function() {
+            button.textContent = "Add to Cart 🛒";
+        }, 1200);
+    }
+
+    alert(productName + " added to cart!");
 }
 
 // Remove product from cart
@@ -19,7 +47,7 @@ function removeFromCart(index) {
     updateCart();
 }
 
-// Update cart safely on every page
+// Update cart on every page
 function updateCart() {
     const cartCount = document.getElementById("cart-count");
     const cartItems = document.getElementById("cart-items");
@@ -35,12 +63,18 @@ function updateCart() {
     cart.forEach(function(product, index) {
         total += Number(product.price) || 0;
 
-        // Create cart item only if the cart section exists
         if (cartItems) {
             const item = document.createElement("li");
 
-            item.textContent =
-                product.name + " - ₹" + product.price + " ";
+            let itemText =
+                product.name + " - ₹" +
+                Number(product.price).toLocaleString("en-IN");
+
+            if (product.size) {
+                itemText += " | Size: " + product.size;
+            }
+
+            item.appendChild(document.createTextNode(itemText + " "));
 
             const removeButton = document.createElement("button");
             removeButton.textContent = "Remove ❌";
@@ -63,19 +97,17 @@ function updateCart() {
     }
 
     if (cartTotal) {
-        cartTotal.textContent = total;
+        cartTotal.textContent = total.toLocaleString("en-IN");
     }
 
     localStorage.setItem("stepStyleCart", JSON.stringify(cart));
 }
 
-// Search products and apply category filter
+// Search products
 function searchProducts() {
     const searchInput = document.getElementById("searchInput");
 
-    if (!searchInput) {
-        return;
-    }
+    if (!searchInput) return;
 
     const searchText = searchInput.value.toLowerCase().trim();
     const products = document.querySelectorAll(".product-card");
@@ -83,9 +115,7 @@ function searchProducts() {
     products.forEach(function(product) {
         const nameElement = product.querySelector("h3");
 
-        if (!nameElement) {
-            return;
-        }
+        if (!nameElement) return;
 
         const productName = nameElement.textContent.toLowerCase();
         const matchesSearch = productName.includes(searchText);
@@ -117,24 +147,21 @@ function filterCategory(category, button) {
     searchProducts();
 }
 
-// Clear the entire cart
+// Clear cart
 function clearCart() {
     cart = [];
     updateCart();
 }
 
-// Load saved customer reviews
+// Customer reviews
 let savedReviews =
     JSON.parse(localStorage.getItem("stepStyleReviews")) || [];
 
 const reviewForm = document.getElementById("review-form");
 const reviewList = document.getElementById("review-list");
 
-// Display one review, if this page has a reviews section
 function displayReview(review) {
-    if (!reviewList) {
-        return;
-    }
+    if (!reviewList) return;
 
     const reviewItem = document.createElement("div");
     reviewItem.className = "review-item";
@@ -174,20 +201,22 @@ function displayReview(review) {
     reviewList.appendChild(reviewItem);
 }
 
-// Display saved reviews only when the reviews section exists
 if (reviewList) {
     savedReviews.forEach(function(review) {
         displayReview(review);
     });
 }
 
-// Submit customer reviews only when the form exists
 if (reviewForm) {
     reviewForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const name = document.getElementById("review-name").value.trim();
-        const rating = document.getElementById("review-rating").value;
+        const name =
+            document.getElementById("review-name").value.trim();
+
+        const rating =
+            document.getElementById("review-rating").value;
+
         const message =
             document.getElementById("review-message").value.trim();
 
@@ -209,24 +238,17 @@ if (reviewForm) {
     });
 }
 
-// Load the cart when the page opens
-updateCart();
-
-/* Open the selected product's details page */
+// Open product details page
 function openProductDetails(button) {
     const card = button.closest(".product-card");
 
-    if (!card) {
-        return;
-    }
+    if (!card) return;
 
     const image = card.querySelector("img");
     const name = card.querySelector("h3");
     const priceText = card.querySelector("p");
 
-    if (!image || !name || !priceText) {
-        return;
-    }
+    if (!image || !name || !priceText) return;
 
     const productName = name.textContent.trim();
     const productPrice = priceText.textContent.replace(/[^\d]/g, "");
@@ -259,8 +281,7 @@ function openProductDetails(button) {
         "product-details.html?" + params.toString();
 }
 
-
-/* Load the selected product on the details page */
+// Load product details page
 const detailsButton =
     document.getElementById("details-add-to-cart");
 
@@ -268,7 +289,7 @@ if (detailsButton) {
     const params = new URLSearchParams(window.location.search);
 
     const productName =
-        params.get("name") || "Running Shoes 👟";
+        params.get("name") || "Running Shoes";
 
     const productPrice =
         Number(params.get("price")) || 1499;
@@ -283,8 +304,7 @@ if (detailsButton) {
         "₹" + productPrice.toLocaleString("en-IN");
 
     if (productImage) {
-        document.getElementById("detail-image").src =
-            productImage;
+        document.getElementById("detail-image").src = productImage;
     }
 
     if (productDescription) {
@@ -293,8 +313,49 @@ if (detailsButton) {
     }
 
     detailsButton.addEventListener("click", function() {
-        addToCart(productName, productPrice);
+        const sizeSelect = document.getElementById("detail-size");
+        const size = sizeSelect ? sizeSelect.value : "";
 
+        if (sizeSelect && !size) {
+            alert("Please select your size first!");
+            return;
+        }
+
+        addToCart(productName, productPrice, size);
         detailsButton.textContent = "Added to Cart ✓";
     });
+}
+
+// Load cart when page opens
+updateCart();
+
+
+function openProductDetails(button) {
+
+    const card = button.closest(".product-card");
+
+    const name = card.querySelector("h3").textContent;
+    const price = card.querySelector("p").textContent;
+    const image = card.querySelector("img").src;
+
+    window.location.href =
+        "product-details.html?name=" + encodeURIComponent(name) +
+        "&price=" + encodeURIComponent(price.replace(/[^\d]/g, "")) +
+        "&image=" + encodeURIComponent(image);
+}
+
+function openProductDetails(button) {
+    const card = button.closest(".product-card");
+
+    const name = card.querySelector("h3").textContent;
+    const price = card.querySelector("p").textContent;
+    const image = card.querySelector("img").src;
+
+    const url = new URL("product-details.html", window.location.href);
+
+    url.searchParams.set("name", name);
+    url.searchParams.set("price", price.replace(/[^\d]/g, ""));
+    url.searchParams.set("image", image);
+
+    window.location.href = url.href;
 }

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetStyle - Sandals Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header collection-header">
+    <div class="header-brand">
+        <img src="images/MeetStyle-logo.png.png"
+             alt="MeetStyle"
+             class="meetstyle-logo-image">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="sandals.html">Sandals</a>
+        <a href="cart.html">My Cart 🛒</a>
+    </nav>
+
+    <div class="cart-badge">
+        🛒 Cart: <span id="header-cart-count">0</span>
+    </div>
+</header>
+
+<main class="collection-page sandals-page">
+    <section class="collection-products">
+
+        <h1>Our Sandals Collection 🩴</h1>
+        <p>Discover elegant designs for every occasion.</p>
+
+        <div class="product-container">
+
+            <!-- Stylish Sandals -->
+            <div class="product-card" id="sandals">
+
+                <img src="images/sandals.jpg" alt="Stylish Sandals">
+
+                <h3>Stylish Sandals 🩴</h3>
+                <p>Price: ₹799</p>
+
+                <label for="sandals-size">Select Size:</label>
+                <select id="sandals-size" class="product-size">
+                    <option value="">Choose Size</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button onclick="addToCart('Stylish Sandals', 799, this)">
+                    Add to Cart 🛒
+                </button>
+
+                <button type="button" class="details-btn"
+                        onclick="openProductDetails(this)">
+                    View Details
+                </button>
+
+            </div>
+
+            <!-- Stylish Heels -->
+            <div class="product-card" id="heels">
+
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700"
+                     alt="Stylish Heels">
+
+                <h3>Stylish Heels 👠</h3>
+                <p>Price: ₹1,299</p>
+
+                <label for="heels-size">Select Size:</label>
+                <select id="heels-size" class="product-size">
+                    <option value="">Choose Size</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button onclick="addToCart('Stylish Heels', 1299, this)">
+                    Add to Cart 🛒
+                </button>
+
+                <button type="button" class="details-btn"
+                        onclick="openProductDetails(this)">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <a href="sandals.html" class="back-home-btn">
+            ← Back to Sandals
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 MeetStyle. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

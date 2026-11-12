@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetStyle - Shoes Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header collection-header">
+    <div class="header-brand">
+        <img src="images/MeetStyle-logo.png.png"
+             alt="MeetStyle"
+             class="meetstyle-logo-image">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="sandals.html">Sandals</a>
+        <a href="cart.html">My Cart 🛒</a>
+    </nav>
+
+    <div class="cart-badge">
+        🛒 Cart: <span id="header-cart-count">0</span>
+    </div>
+</header>
+
+<main class="collection-page shoes-page">
+    <section class="collection-products">
+
+        <h1>Our Shoes Collection 👟</h1>
+        <p>Find your perfect pair for every step.</p>
+
+        <div class="product-container">
+
+            <!-- Running Shoes -->
+            <div class="product-card" id="shoes">
+
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"
+                     alt="Running Shoes">
+
+                <h3>Running Shoes 👟</h3>
+                <p>Price: ₹1,499</p>
+
+                <label for="running-size">Select Size:</label>
+                <select id="running-size" class="product-size">
+                    <option value="">Choose Size</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button onclick="addToCart('Running Shoes', 1499, this)">
+                    Add to Cart 🛒
+                </button>
+
+                <button type="button" class="details-btn"
+                        onclick="openProductDetails(this)">
+                    View Details
+                </button>
+
+            </div>
+
+            <!-- White Sneakers -->
+            <div class="product-card" id="sneakers">
+
+                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=700"
+                     alt="White Sneakers">
+
+                <h3>White Sneakers 👟</h3>
+                <p>Price: ₹1,899</p>
+
+                <label for="sneakers-size">Select Size:</label>
+                <select id="sneakers-size" class="product-size">
+                    <option value="">Choose Size</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button onclick="addToCart('White Sneakers', 1899, this)">
+                    Add to Cart 🛒
+                </button>
+
+                <button type="button" class="details-btn"
+                        onclick="openProductDetails(this)">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <a href="shoes.html" class="back-home-btn">
+            ← Back to Shoes
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 MeetStyle. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

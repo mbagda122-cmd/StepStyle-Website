@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,68 +12,70 @@
 
 <body>
 
-    <header>
-        <h1>MeetStyle 👟</h1>
-        <p>Every Step, Your Style.</p>
+<header class="site-header">
 
-        
-<nav>
-    <a href="index.html">Home</a>
-    <a href="shoes.html">Shoes</a>
-    <a href="sandals.html">Sandals</a>
-    <a href="cart.html">My Cart 🛒</a>
-</nav>
+    <div class="header-brand">
+        <img src="images/MeetStyle-logo.png.png"
+             alt="MeetStyle"
+             class="meetstyle-logo-image">
+    </div>
 
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="sandals.html">Sandals</a>
+        <a href="cart.html">My Cart 🛒</a>
+    </nav>
 
-        <div class="cart-badge">
-            🛒 Cart: <span id="header-cart-count">0</span>
+    <div class="cart-badge">
+        🛒 Cart: <span id="header-cart-count">0</span>
+    </div>
+
+</header>
+
+<main>
+
+    <section class="product-detail-layout">
+
+        <div class="product-detail-image">
+            <img
+                id="detail-image"
+                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+                alt="Selected footwear">
         </div>
-    </header>
 
-    <main>
+        <div class="product-detail-info">
 
-        <section class="product-detail-layout">
+            <p class="featured-label">MEETSTYLE COLLECTION</p>
 
-            <div class="product-detail-image">
-                <img
-                    id="detail-image"
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
-                    alt="Selected footwear"
-                >
-            </div>
+            <h2 id="detail-name">Running Shoes 👟</h2>
 
-            <div class="product-detail-info">
+            <h3 id="detail-price">₹1,499</h3>
 
-                <p class="featured-label">MEETSTYLE COLLECTION</p>
+            <p id="detail-description">
+                Discover stylish and comfortable footwear
+                for your everyday journey.
+            </p>
 
-                <h2 id="detail-name">Running Shoes 👟</h2>
+            <button id="details-add-to-cart">
+                Add to Cart 🛒
+            </button>
 
-                <h3 id="detail-price">₹1,499</h3>
+            <p>
+                <a href="index.html">← Continue Shopping</a>
+            </p>
 
-                <p id="detail-description">
-                    Discover stylish and comfortable footwear
-                    for your everyday journey.
-                </p>
+        </div>
 
-                <button id="details-add-to-cart">
-                    Add to Cart 🛒
-                </button>
+    </section>
 
-                <p>
-                    <a href="index.html">← Continue Shopping</a>
-                </p>
+</main>
 
-            </div>
+<footer>
+    <p>© 2026 MeetStyle. All rights reserved.</p>
+</footer>
 
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2026 MeetStyle. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
